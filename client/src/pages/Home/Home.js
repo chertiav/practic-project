@@ -12,10 +12,10 @@ import Spinner from '../../components/Spinner/Spinner';
 const Home = (props) => {
   const [index, setIndex] = useState(0);
   const [styleName, setStyle] = useState(styles.headline__static);
-  let timeout;
+  // let timeout;
 
   useEffect(() => {
-    timeout = setInterval(() => {
+    const timeout = setInterval(() => {
       setIndex(index + 1);
       setStyle(styles.headline__isloading);
     }, 3000);
@@ -23,7 +23,7 @@ const Home = (props) => {
       setStyle(styles.headline__static);
       clearInterval(timeout);
     };
-  });
+  }, [index]);
 
   const { isFetching } = props;
   const text = CONSTANTS.HEADER_ANIMATION_TEXT[index % CONSTANTS.HEADER_ANIMATION_TEXT.length];
